@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<jsp:useBean id="usuarioSesion" scope="session" type="com.example._20190674_20191018.Beans.Usuario" class="com.example._20190674_20191018.Beans.Usuario"/>
+<%int idCodigo= usuarioSesion.getCodigoPUCP();%>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,38 +28,49 @@
                 src="ima/logo.png"
                 width="200"
                 height="150"
-                alt=""
+                style="margin-left: 150px"
         />
 
     </div>
     <div class="card-body">
         <div class="card-body">
-            <h4 class="card-title">Bienvenido a Televiajero</h4>
-            <p class="card-text">
-                <input
+            <h4 class="card-title" style="margin-left: 100px">Bienvenido a Televiajero</h4>
+            <form class="form-signin" method="post" action="<%=request.getContextPath()%>/LoginServlet" >
+                <p class="card-text">
+                    <input
                         type="text"
                         class="form-control"
                         placeholder="Username"
                         aria-label="Username"
+                        name="user"
                         aria-describedby="basic-addon1"
-                />
-            <div>
-                <input
-                        type="text"
+
+                    />
+                <div>
+                    <input
+                        type="password"
                         class="form-control"
                         placeholder="Contraseña"
                         aria-label="Contraseña"
+                        name="password"
                         aria-describedby="basic-addon1"
-                />
-            </div>
-            <BR><h3><button type="button" class="btn btn-primary">Ingresar</button></h3>
-            <h6>
-                <a href="<%=request.getContextPath()%>/RegistroServlet" class="link-primary">Soy nuevo y quiero registrarme
-                </a>
+                    />
+                </div>
+                <%if(session.getAttribute("error")!=null){%>
+                <div class="text-danger mb-2">Error en usuario o contraseña</div>
+                <%}%>
+                <%session.removeAttribute("error"); session.invalidate();%>
 
+            </form>
+            <h6>
+                    <a href="<%=request.getContextPath()%>/ListaServlet?action=listar&idCodigo=<%=idCodigo%>" class="link-primary" style="margin-left: 120px">Inicia Sesión
+                    </a>
+                <a href="<%=request.getContextPath()%>/RegistroServlet" class="link-primary" style="margin-left: 120px">Soy nuevo y quiero registrarme
+                </a>
             </h6>
         </div>
     </div>
+</div>
 </body>
 </html>
 

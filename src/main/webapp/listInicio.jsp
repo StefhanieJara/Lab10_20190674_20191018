@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example._20190674_20191018.Beans.Viaje" %><%--
   Created by IntelliJ IDEA.
   User: stefh
   Date: 28/06/2022
@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="lista" scope="request" type="java.util.ArrayList<com.example._20190674_20191018.Beans.Viaje>" />
+<jsp:useBean id="idCodigo" scope="request" type="java.lang.Integer"/>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -160,20 +162,26 @@
         <table>
             <thead>
             <tr>
-                <th>Peso</th>
-                <th>Fuerza</th>
-                <th>Nombre comleto de la pareja</th>
-                <th>Peso cargado</th>
-                <th>-</th>
+                <th>id Viaje</th>
+                <th>Fecha Reserva</th>
+                <th>Ciudad de Origen</th>
+                <th>Ciudad de Destino</th>
+                <th>Empresa Seguro</th>
+                <th>Número de Boletos</th>
+                <th>Costo Total</th>
             </tr>
             </thead>
+            <%for(Viaje viaje : lista) {%>
             <tr>
-                <td>sdfsd</td>
-                <td>dfsdf</td>
-                <td>asda</td>
-                <td></td>
-                <td></td>
+                <td><%=viaje.getIdViajes()%></td>
+                <td><%=viaje.getFechaReserva()%></td>
+                <td><%=viaje.getCiudadOrigen()%></td>
+                <td><%=viaje.getCiudadDestino()%></td>
+                <td><%=viaje.getEmpresaSeguro()%></td>
+                <td><%=viaje.getNumeroBoletos()%></td>
+                <td><%=viaje.getCostoTotal()%></td>
             </tr>
+            <%}%>
         </table>
     </div>
 </main>

@@ -31,6 +31,7 @@
                 class="LogoCentral"
                 src="ima/logo.png"
                 width="200"
+                style="margin-left: 150px"
                 height="150"
                 alt=""
         />
@@ -42,7 +43,7 @@
             <h6>
                 <a href="" class="link-primary">Su registro esta completado
                 </a>
-                <a href="<%=request.getContextPath()%>/LoginServlet" class="link-primary">Inicie Sesión
+                <a href="<%=request.getContextPath()%>/index.jsp" class="link-primary">Inicie Sesión
                 </a>
 
             </h6>
