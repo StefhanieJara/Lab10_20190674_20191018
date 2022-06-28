@@ -114,7 +114,7 @@
         <div
                 class="col-xl-1 col-lg-1 col-md-1 col-sm-2 col-2 d-flex justify-content-start ps-0"
         >
-            <p>Hola como estas</p>
+            <p class="text-white">Hola como estas</p>
         </div>
         <div
                 class="col-xl-1 col-lg-1 col-md-1 col-sm-2 col-2 d-flex justify-content-start ps-0"
@@ -136,7 +136,7 @@
     <div class="card-header my-2"></div>
     <div class="row">
         <div class="moverTitulo">
-            <h3 class="text-white">Bienvenido al menú de viajes</h3>
+            <h3 class="text-white" style="margin-left: 100px" >Bienvenido al menú de viajes</h3>
         </div>
     </div>
 
