@@ -5,7 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ViajesDao extends DaoBase{
-    public void crearViaje(String idviajes, String fechaReserva, String fechaViaje, String ciudadOrigen, String ciudadDestino, int empresaSeguro, int numeroBoletos, Float costoTotal, int codigoPucp){
+    public void crearViaje(String fechaReserva, String fechaViaje, String ciudadOrigen, String ciudadDestino, int empresaSeguro, int numeroBoletos, Float costoTotal, int codigoPucp){
+        String idviajes="";
+        String[] nums = {"0","1","2","3","4","5","6","7","8","9"};
+        for (int i = 0; i < 8; i++ ) {
+            idviajes += nums[(int) Math.round(Math.random() * 9)];
+        }
 
         String sql = "INSERT INTO viajes (idviajes, fechaReserva, fechaViaje, ciudadOrigen, ciudadDestino, empresaSeguro, numeroBoletos, costoTotal, codigoPucp)\n" +
                 "VALUES (?,?,?,?,?,?,?,?,?),";
