@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "RegistroServlet", value = "/RegistroServlet")
 public class RegistroServlet extends HttpServlet {
@@ -39,12 +40,60 @@ public class RegistroServlet extends HttpServlet {
 
         switch (action){
             case "registrar"->{
-                if(loginDao.existeEmail(correo)){
+                if(loginDao.existeEmail(correo) ==1){
                     session.setAttribute("error","emailExiste");
                     response.sendRedirect(request.getContextPath()+"/RegistroServlet");
                 }else{
-                    session.setAttribute("error","emailExiste1");
-                    response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+                    if(pass.equals(pass0)){
+                        if(loginDao.validarContrasena(pass)==1) {
+                            if(loginDao.tiene_numeros(nombre) == 0){
+                                if(loginDao.tiene_numeros(apellido)==0){
+                                    int edad= Integer.parseInt(edadStr);
+                                    if(loginDao.validar_edad(edad)==1){
+                                        int codigo = Integer.parseInt(codigostr);
+                                        if(((int)Math.log10(codigo)+1)==8){
+                                            try {
+                                                loginDao.crearUsuario(nombre,apellido,edad,correo,pass,codigo,especialidad);
+                                                session.invalidate();
+                                                view= request.getRequestDispatcher("confirmoRegistro.jsp");
+                                                view.forward(request, response);
+                                            } catch (SQLException e) {
+                                                e.printStackTrace();
+                                                session.setAttribute("error","errorSQL");
+                                                response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+                                            }
+                                        }else{
+                                            session.setAttribute("error","codigoIncorrecto");
+                                            response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+                                        }
+
+                                    }
+                                    else{
+                                        session.setAttribute("error","edadIncorrecta");
+                                        response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+                                    }
+
+                                }else{
+                                    session.setAttribute("error","apellidoIncorrecto");
+                                    response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+                                }
+                            }else{
+                                session.setAttribute("error","nombreIncorrecto");
+                                response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+                            }
+
+
+                        }
+                        else{
+                            session.setAttribute("error","passNocumple");
+                            response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+
+                        }
+
+                    }else {
+                        session.setAttribute("error","passNoCoinciden");
+                        response.sendRedirect(request.getContextPath()+"/RegistroServlet");
+                    }
 
                 }
 
