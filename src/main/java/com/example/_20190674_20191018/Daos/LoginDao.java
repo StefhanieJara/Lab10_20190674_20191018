@@ -17,7 +17,7 @@ public class LoginDao extends DaoBase{
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){
                     usuario = new Usuario();
-                    usuario.setCodigoPUCP(rs.getString(1));
+                    usuario.setCodigoPUCP(Integer.valueOf(rs.getString(1)));
                     usuario.setCorreoPucp(rs.getString(5));
                     usuario.setEspecialidad(rs.getString(6));
                 }

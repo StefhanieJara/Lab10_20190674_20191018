@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ListarDao  extends DaoBase{
 
-    public ArrayList<Viaje> listarViajes(String codigoPucp) {
+    public ArrayList<Viaje> listarViajes(int codigoPucp) {
 
         ArrayList<Viaje> listaViajes = new ArrayList<>();
 
@@ -16,7 +16,7 @@ public class ListarDao  extends DaoBase{
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, codigoPucp);
+            pstmt.setString(1, Integer.toString(codigoPucp));
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     Viaje viajes = new Viaje();
@@ -40,7 +40,7 @@ public class ListarDao  extends DaoBase{
         return listaViajes;
 
     }
-    public ArrayList<Viaje> filtrarViajes(String codigoPucp, String filtro) {
+    public ArrayList<Viaje> filtrarViajes(int codigoPucp, String filtro) {
 
         ArrayList<Viaje> filtroViajes = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class ListarDao  extends DaoBase{
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
-            pstmt.setString(1, codigoPucp);
+            pstmt.setString(1, Integer.toString(codigoPucp));
             pstmt.setString(2, filtro);
             pstmt.setString(3, filtro);
             try (ResultSet rs = pstmt.executeQuery()) {
