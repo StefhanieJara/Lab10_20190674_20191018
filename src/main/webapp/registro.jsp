@@ -45,25 +45,33 @@
             <h3 class="card-title">Bienvenido a Televiajero</h3>
             <h4 class="card-title">Registro</h4>
             <div class="card-body p-4 p-md-5">
-                <form>
+                <form method="post" action="<%=request.getContextPath()%>/RegistroServlet?action=registrar">
+                    <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("errorSQL")){%>
+                    <div class="text-danger mb-2">¡Lo sentimos! Hubo un error en su registro, vuelva a intentar.</div>
+                    <%}%>
                     <div class="form-outline">
                         <input type="hidden" name="pagina" value="1"><!--Siempre regresaremos pagina 1-->
                         <label class="form-label" for="farmaName">Ingrese su nombre</label>
                         <input type="text"
-                               name="numeroSala"
+                               name="nombre"
                                id="farmaName"
                                class="form-control"
-                               placeholder="Ingrese su nombre" max="10" min="1" required="required"/>
+                               placeholder="Ingrese su nombre" />
                     </div>
+                    <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("nombreIncorrecto")){%>
+                    <div class="text-danger mb-2">El nombre no debe contener números</div>
+                    <%}%>
                     <div class="form-outline">
                         <input type="hidden" name="pagina" value="1"><!--Siempre regresaremos pagina 1-->
                         <label class="form-label" for="farmaName">Ingrese su apellido</label>
                         <input type="text"
-                               name="numeroSala"
-                               id="farmaName"
+                               name="apellido"
                                class="form-control"
-                               placeholder="Ingrese su apellido" max="10" min="1" required="required"/>
+                               placeholder="Ingrese su apellido" />
                     </div>
+                    <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("apellidoIncorrecto")){%>
+                    <div class="text-danger mb-2">El apellido no debe contener números</div>
+                    <%}%>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -71,35 +79,48 @@
                                 <input type="hidden" name="pagina" value="1"><!--Siempre regresaremos pagina 1-->
                                 <label class="form-label" for="farmaName">Ingrese su edad</label>
                                 <input type="number"
-                                       name="numeroSala"
-                                       id="farmaName"
+                                       name="edad"
                                        class="form-control"
-                                       placeholder="Edad" max="10" min="1" required="required"/>
+                                       placeholder="Edad" />
                             </div>
                         </div>
+                        <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("edadIncorrecta")){%>
+                        <div class="text-danger mb-2">Usted no tiene la edad permitida</div>
+                        <div class="text-danger mb-2">Debe tener entre 18 y 30 años</div>
+                        <%}%>
 
                         <div class="col-md-6">
                             <div class="form-outline">
                                 <label class="form-label" for="farmaMail">Ingrese su Código PUCP</label>
                                 <input type="number"
                                        id="farmaMail"
-                                       name="aforo"
+                                       name="codigo"
                                        class="form-control"
-                                       placeholder="Codigo PUCP" required="required" max="200" min="50"/>
+                                       placeholder="Codigo PUCP" />
                             </div>
                         </div>
+                        <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("codigoIncorrecto")){%>
+                        <div class="text-danger mb-2">Codigo debe tener 8 dígitos!</div>
+                        <%}%>
                     </div>
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="email" name="email" placeholder="Ingrese su Correo" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="required">
+                        <input type="email" name="email" placeholder="Correo" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" >
                     </div>
+                    <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("emailExiste")){%>
+                    <div class="text-danger mb-2">¡Ya existe una cuenta con este correo! Inicie Sesión</div>
+                    <%}%>
+
+                    <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("emailExiste1")){%>
+                    <div class="text-danger mb-2">Sigue noma</div>
+                    <%}%>
 
                     <div class="form-outline">
                         <label class="form-label" for="farmaMail">Ingrese su especialidad</label>
                         <input type="text"
-                               name="aforo"
+                               name="especialidad"
                                class="form-control"
-                               placeholder="Codigo PUCP" required="required" max="200" min="50"/>
+                               placeholder="Codigo PUCP"  max="200" min="50"/>
                     </div>
 
                     <div class="form-outline">
@@ -110,6 +131,15 @@
                         <div class="mb-3">
                             <input class="form-control" type="password" name="pass" placeholder="Confirmar contraseña" required="required">
                         </div>
+                        <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("passNoCoinciden")){%>
+                        <div class="text-danger mb-2">Las contraseñas no coinciden!</div>
+                        <%}%>
+                        <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("passNocumple")){%>
+                        <div class="text-danger mb-2">Las contraseñas no cumplen el requerimiento!</div>
+                        <%}%>
+                        <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("passSicumple")){%>
+                        <div class="text-danger mb-2">Las contraseñas cumplen el requerimiento!</div>
+                        <%}%>
                     </div>
 
                     <div class="mb-3">
@@ -117,10 +147,6 @@
                             <strong>Registrarse</strong>
                         </button>
                     </div>
-
-
-
-
                 </form>
             </div>
         </div>

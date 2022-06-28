@@ -6,8 +6,16 @@ public class Usuario {
     private int edad;
     private String correoPucp;
     private String contrasenia;
-    private String codigoPUCP;
+    private int codigoPUCP;
     private String especialidad;
+
+    public int getCodigoPUCP() {
+        return codigoPUCP;
+    }
+
+    public void setCodigoPUCP(int codigoPUCP) {
+        this.codigoPUCP = codigoPUCP;
+    }
 
     public String getNombre() {
         return nombre;
@@ -49,13 +57,7 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public String getCodigoPUCP() {
-        return codigoPUCP;
-    }
 
-    public void setCodigoPUCP(String codigoPUCP) {
-        this.codigoPUCP = codigoPUCP;
-    }
 
     public String getEspecialidad() {
         return especialidad;

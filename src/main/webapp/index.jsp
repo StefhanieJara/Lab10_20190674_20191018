@@ -51,9 +51,7 @@
             </div>
             <BR><h3><button type="button" class="btn btn-primary">Ingresar</button></h3>
             <h6>
-                <a href="#" class="link-primary">Terminos y Condiciones
-
-
+                <a href="<%=request.getContextPath()%>/RegistroServlet" class="link-primary">Soy nuevo y quiero registrarme
                 </a>
 
             </h6>
