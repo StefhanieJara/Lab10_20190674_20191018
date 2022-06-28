@@ -14,7 +14,7 @@
 </head>
 <body
         class="bg-success row align-items-center justify-content-center"
-        background="../resources/ima/fondo2.jpg"
+        background="ima/fondo2.jpg"
 >
 
 <body class="row align-items-center justify-content-center">
