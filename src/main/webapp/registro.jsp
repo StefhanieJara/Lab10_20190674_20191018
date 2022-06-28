@@ -17,12 +17,12 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="css/estilos.css" />
 </head>
 
 <body
         class="bg-success row align-items-center justify-content-center"
-        background="fondo.jpg"
+        background="img/fondo.jpg"
 >
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -33,7 +33,7 @@
     <div class="card-header">
         <img
                 class="LogoCentral"
-                src="logo.png"
+                src="img/logo.png"
                 width="200"
                 height="150"
                 alt=""
