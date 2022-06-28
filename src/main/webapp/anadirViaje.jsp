@@ -5,7 +5,10 @@
   Time: 01:04
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="com.example._20190674_20191018.Beans.Seguros" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean type="java.util.ArrayList<com.example._20190674_20191018.Beans.Seguros>" scope="request" id="seguros"/>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -149,19 +152,19 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-1">
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="productName"
+                                            <label class="form-label" for="fechaViaje"
                                             >Fecha de Viaje</label
                                             >
                                             <input
                                                     type="date"
-                                                    id="productName"
+                                                    id="fechaViaje"
                                                     name="fechaViaje"
                                                     class="form-control"
                                                     placeholder="Ingrese el virus"
                                             />
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="productName"
+                                            <label class="form-label" for="current_date"
                                             >Fecha de Reserva</label>
                                             <div id="current_date"></p>
                                                 <script>
@@ -174,66 +177,69 @@
                                             </div>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="productName"
+                                            <label class="form-label" for="seguros"
                                             >Elija la empresa de seguros</label
                                             >
                                             <select
                                                     class="form-select form-select-sm"
-                                                    name="virus"
+                                                    id = "seguros"
+                                                    name="seguros"
                                                     aria-label=".form-select-sm example"
                                             >
-                                                <option value="Seleccionar genero">Seleccione</option>
-                                                <option value="">Rimac</option>
-                                                <option value="">Pacífico</option>
-                                                <option value="">La positiva</option>
-                                                <option value="">Seguro Internacional</option>
-                                                <option value="">Otro</option>
+                                                <option value="NULL">Seleccione</option>
+                                                <%
+                                                    for (Seguros seguro : seguros) {
+                                                %>
+                                                <option value="<%=seguro.getIdSeguro()%>"><%=seguro.getNombre()%></option>
+                                                <%
+                                                    }
+                                                %>
                                             </select>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="productName"
+                                            <label class="form-label" for="origen"
                                             >Ciudad de Origen</label
                                             >
                                             <input
                                                     type="text"
-                                                    id="productName"
-                                                    name="boletos"
+                                                    id="origen"
+                                                    name="origen"
                                                     class="form-control"
-                                                    placeholder="Ingrese cantidad"
+                                                    placeholder="Ingrese ciudad de origen"
                                             />
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="productName"
+                                            <label class="form-label" for="destino"
                                             >Ciudad de Destino</label
                                             >
                                             <input
                                                     type="text"
-                                                    id="productName"
-                                                    name="boletos"
+                                                    id="destino"
+                                                    name="destino"
                                                     class="form-control"
-                                                    placeholder="Ingrese cantidad"
+                                                    placeholder="Ingrese ciudad de destino"
                                             />
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="productName"
+                                            <label class="form-label" for="boletos"
                                             >Número de Boletos</label
                                             >
                                             <input
                                                     type="number"
-                                                    id="productName"
+                                                    id="boletos"
                                                     name="boletos"
                                                     class="form-control"
                                                     placeholder="Ingrese cantidad"
                                             />
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="productName"
+                                            <label class="form-label" for="costo"
                                             >Costo</label
                                             >
                                             <input
                                                     type="number"
-                                                    id="productName"
-                                                    name="boletos"
+                                                    id="costo"
+                                                    name="costo"
                                                     class="form-control"
                                                     placeholder="Ingrese cantidad"
                                             />
