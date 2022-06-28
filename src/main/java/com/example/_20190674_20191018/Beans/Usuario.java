@@ -9,6 +9,14 @@ public class Usuario {
     private int codigoPUCP;
     private String especialidad;
 
+    public int getCodigoPUCP() {
+        return codigoPUCP;
+    }
+
+    public void setCodigoPUCP(int codigoPUCP) {
+        this.codigoPUCP = codigoPUCP;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -49,13 +57,7 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public int getCodigoPUCP() {
-        return codigoPUCP;
-    }
 
-    public void setCodigoPUCP(int codigoPUCP) {
-        this.codigoPUCP = codigoPUCP;
-    }
 
     public String getEspecialidad() {
         return especialidad;
