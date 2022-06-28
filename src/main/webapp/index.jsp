@@ -15,7 +15,7 @@
 
 <body
         class="bg-success row align-items-center justify-content-center"
-        background="img/fondo.jpg"
+        background="ima/fondo1.jpg"
 >
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -26,7 +26,7 @@
     <div class="card-header">
         <img
                 class="LogoCentral"
-                src="img/logo.png"
+                src="ima/logo.png"
                 width="200"
                 height="150"
                 alt=""

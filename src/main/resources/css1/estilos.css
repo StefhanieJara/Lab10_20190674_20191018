@@ -30,3 +30,14 @@ h3 {
 .imagen5 {
   left: 200px;
 }
+body {
+  background-image: linear-gradient(rgba(5, 10, 5, 0.8), rgba(90, 40, 90, 0.8)),
+  url(ima/fondo1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.body {
+  background-image: url("ima/fondo1.jpg");
+}
