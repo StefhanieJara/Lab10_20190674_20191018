@@ -13,7 +13,7 @@ public abstract class DaoBase {
         }
         String user = "root";
         String pass = "root";
-        String url = "jdbc:mysql://localhost:3306/lab5_20190050";
+        String url = "jdbc:mysql://localhost:3306/lab10";
         return DriverManager.getConnection(url,user,pass);
     }
 

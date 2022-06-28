@@ -3,6 +3,7 @@ package com.example._20190674_20191018.Daos;
 import com.example._20190674_20191018.Beans.Usuario;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class LoginDao extends DaoBase{
     public Usuario validar(String correo, String password){
@@ -30,15 +31,16 @@ public class LoginDao extends DaoBase{
         return usuario;
     }
 
-    public boolean existeEmail(String email){
-        boolean existe= false;
-        String sql="SELECT * FROM usuario WHERE correoPucp =?";
+    public int existeEmail(String email){
+        int existe= 0;
+        String sql="SELECT * FROM usuario WHERE correoPucp = ?";
+        System.out.println("llega");
         try(Connection conn=this.getConnection();
             PreparedStatement pstmt= conn.prepareStatement(sql)){
             pstmt.setString(1, email);
             try(ResultSet rs= pstmt.executeQuery()){
                 if(rs.next()){
-                    existe=true;
+                    existe=1;
                 }
             }
         } catch (SQLException e) {
@@ -46,6 +48,10 @@ public class LoginDao extends DaoBase{
         }
         return existe;
     }
+
+
+
+
 
 
     public int tiene_numeros(String texto){
@@ -123,7 +129,7 @@ public class LoginDao extends DaoBase{
 
 
     public void crearUsuario(String nombre,String apellido, int edad, String correoPucp, String contrasenia, int codigoPUCP, String especialidad) throws SQLException {
-        String sql= "INSERT INTO persona (codigoPucp, nombre, apellido, edad, correoPucp, especialidad, contrasenha) " +
+        String sql= "INSERT INTO usuario (codigoPucp, nombre, apellido, edad, correoPucp, especialidad, contrasenha) " +
                 "values (?,?, ?, ?, ?, ?, sha2(?,256));";
         Connection conn= this.getConnection();
         PreparedStatement pstmt= conn.prepareStatement(sql);
