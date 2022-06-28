@@ -1,8 +1,12 @@
 package com.example._20190674_20191018.Daos;
 
+import com.example._20190674_20191018.Beans.Viaje;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ViajesDao extends DaoBase{
     public void crearViaje(String fechaReserva, String fechaViaje, String ciudadOrigen, String ciudadDestino, int empresaSeguro, int numeroBoletos, Float costoTotal, int codigoPucp){
@@ -12,8 +16,16 @@ public class ViajesDao extends DaoBase{
             idviajes += nums[(int) Math.round(Math.random() * 9)];
         }
 
-        String sql = "INSERT INTO viajes (idviajes, fechaReserva, fechaViaje, ciudadOrigen, ciudadDestino, empresaSeguro, numeroBoletos, costoTotal, codigoPucp)\n" +
-                "VALUES (?,?,?,?,?,?,?,?,?),";
+        String sql = "INSERT INTO viajes (idviajes, fechaReserva, fechaViaje, ciudadOrigen, ciudadDestino, empresaSeguro, numeroBoletos, costoTotal, codigoPucp) \n" +
+                "VALUES (?,\n" +
+                "?,\n" +
+                "?,\n" +
+                "?,\n" +
+                "?,\n" +
+                "?,\n" +
+                "?,\n" +
+                "?,\n" +
+                "?)";
 
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -32,5 +44,27 @@ public class ViajesDao extends DaoBase{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public String getDate(){
+        String fecha = "";
+
+        String sql = "SELECT CURDATE()";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    Viaje viajes = new Viaje();
+                    viajes.setFechaReserva(rs.getString(1));
+                    fecha = viajes.getFechaReserva();
+                }
+
+            } catch (SQLException e) {
+                System.out.println("No se pudo realizar la busqueda");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return fecha;
     }
 }

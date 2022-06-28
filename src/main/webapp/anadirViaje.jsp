@@ -7,7 +7,9 @@
 --%>
 <%@ page import="com.example._20190674_20191018.Beans.Seguros" %>
 <%@ page import="java.util.Objects" %>
+<%@ page import="jdk.internal.org.objectweb.asm.tree.analysis.Value" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="date" class="java.lang.String"/>
 <jsp:useBean type="java.util.ArrayList<com.example._20190674_20191018.Beans.Seguros>" scope="request" id="seguros"/>
 <html>
 <head>
@@ -148,33 +150,31 @@
                             <h4 class="my-2">Registrar Viaje</h4>
                         </div>
                         <div class="card-body p-4 p-md-5">
-                            <form>
+                            <form method="post" action="<%=request.getContextPath()%>/AnadirServlet?a=agregarViaje">
                                 <div class="row">
                                     <div class="col-md-6 mb-1">
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="fechaViaje"
-                                            >Fecha de Viaje</label
-                                            >
+                                            >Fecha de Viaje</label>
                                             <input
                                                     type="date"
                                                     id="fechaViaje"
                                                     name="fechaViaje"
                                                     class="form-control"
-                                                    placeholder="Ingrese el virus"
+                                                    placeholder="Fecha de Viaje"
                                             />
                                         </div>
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="current_date"
                                             >Fecha de Reserva</label>
-                                            <div id="current_date"></p>
-                                                <script>
-                                                    date = new Date();
-                                                    year = date.getFullYear();
-                                                    month = date.getMonth() + 1;
-                                                    day = date.getDate();
-                                                    document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
-                                                </script>
-                                            </div>
+                                            <input
+                                                    type="date"
+                                                    id="current_date"
+                                                    name="current_date"
+                                                    class="form-control"
+                                                    value="date"
+                                                    placeholder="Fecha de reserva"
+                                            />
                                         </div>
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="seguros"
