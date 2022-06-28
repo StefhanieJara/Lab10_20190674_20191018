@@ -1,0 +1,29 @@
+.card {
+  width: 600px;
+}
+h5 {
+  text-align: center;
+  color: black;
+}
+h4 {
+  text-align: center;
+}
+h6 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
+.imagen1 {
+  width: 300px;
+}
+
+.imagen2 {
+  width: 300px;
+}
+.imagen3 {
+  width: 300px;
+}
+.imagen5 {
+  left: 200px;
+}
