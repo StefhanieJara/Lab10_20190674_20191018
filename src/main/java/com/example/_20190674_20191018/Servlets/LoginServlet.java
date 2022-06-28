@@ -38,11 +38,14 @@ public class LoginServlet extends HttpServlet {
         String pass = request.getParameter("password");
         Usuario usuario = loginDao.validar(correo, pass);
         HttpSession session = request.getSession();
+        System.out.println(usuario.getCodigoPUCP());
 
         if(usuario.getCodigoPUCP()!=0){
             if(usuario.getEspecialidad().equals("Telecomunicaciones")){
                 session.setAttribute("usuarioSesion",usuario);
+                request.getSession().setAttribute("idCodigo", usuario.getCodigoPUCP());
                 response.sendRedirect(request.getContextPath()+"/ListaServlet");
+                System.out.println("logueo");
             }else{
                 response.sendRedirect(request.getContextPath()+"/LoginServlet");
             }

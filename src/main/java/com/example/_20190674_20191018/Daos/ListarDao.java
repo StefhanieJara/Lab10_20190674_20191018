@@ -18,7 +18,7 @@ public class ListarDao  extends DaoBase{
 
             pstmt.setString(1, Integer.toString(codigoPucp));
             try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
+                while (rs.next()) {
                     Viaje viajes = new Viaje();
                     viajes.setIdViajes(rs.getString(1));
                     viajes.setFechaReserva(rs.getString(2));

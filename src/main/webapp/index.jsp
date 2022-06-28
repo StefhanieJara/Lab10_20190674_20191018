@@ -60,7 +60,9 @@
                 <div class="text-danger mb-2">Error en usuario o contraseña</div>
                 <%}%>
                 <%session.removeAttribute("error"); session.invalidate();%>
-
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-ingresar" >Ingresar</button>
+                </div>
             </form>
             <h6>
                     <a href="<%=request.getContextPath()%>/ListaServlet?action=listar&idCodigo=<%=idCodigo%>" class="link-primary" style="margin-left: 120px">Inicia Sesión
