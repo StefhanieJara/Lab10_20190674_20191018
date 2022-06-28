@@ -34,6 +34,7 @@
         <img
                 class="LogoCentral"
                 src="ima/logo.png"
+                style="margin-left: 150px"
                 width="200"
                 height="150"
                 alt=""
@@ -42,8 +43,8 @@
     </div>
     <div class="card-body">
         <div class="card-body">
-            <h3 class="card-title">Bienvenido a Televiajero</h3>
-            <h4 class="card-title">Registro</h4>
+            <h3 class="card-title" style="margin-left: 80px" >Bienvenido a Televiajero</h3>
+            <h4 class="card-title" style="margin-left: 190px" >Registro</h4>
             <div class="card-body p-4 p-md-5">
                 <form method="post" action="<%=request.getContextPath()%>/RegistroServlet?action=registrar">
                     <%if(session.getAttribute("error")!=null && session.getAttribute("error").equals("errorSQL")){%>
@@ -117,10 +118,11 @@
 
                     <div class="form-outline">
                         <label class="form-label" for="farmaMail">Ingrese su especialidad</label>
+                        <label class="form-label" for="farmaMail">Ingrese "Telecomunicaciones" si es alumno de esa especialidad</label>
                         <input type="text"
                                name="especialidad"
                                class="form-control"
-                               placeholder="Codigo PUCP"  max="200" min="50"/>
+                               placeholder="Especialidad"  max="200" min="50"/>
                     </div>
 
                     <div class="form-outline">

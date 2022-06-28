@@ -34,18 +34,15 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginDao loginDao = new LoginDao();
-        String correo = request.getParameter("correo");
-        String pass = request.getParameter("pass");
+        String correo = request.getParameter("user");
+        String pass = request.getParameter("password");
         Usuario usuario = loginDao.validar(correo, pass);
         HttpSession session = request.getSession();
 
-        if(usuario !=null){
-
-            session.setAttribute("usuarioSesion",usuario);
-            session.setAttribute("especialidad",usuario.getEspecialidad());
-            session.setMaxInactiveInterval(60*60);
-            if(usuario.getEspecialidad() == "Telecomunicaciones"){
-                response.sendRedirect(request.getContextPath()+"/MenuServlet");
+        if(usuario.getCodigoPUCP()!=0){
+            if(usuario.getEspecialidad().equals("Telecomunicaciones")){
+                session.setAttribute("usuarioSesion",usuario);
+                response.sendRedirect(request.getContextPath()+"/ListaServlet");
             }else{
                 response.sendRedirect(request.getContextPath()+"/LoginServlet");
             }
@@ -55,3 +52,4 @@ public class LoginServlet extends HttpServlet {
         }
     }
 }
+

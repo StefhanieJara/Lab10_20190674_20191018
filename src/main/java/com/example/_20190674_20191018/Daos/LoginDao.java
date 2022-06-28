@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class LoginDao extends DaoBase{
     public Usuario validar(String correo, String password){
-        Usuario usuario = null;
+        Usuario usuario = new Usuario();
         String sql = "SELECT * FROM usuario WHERE correoPucp =? AND contrasenha=sha2(?,256)";
 
         try (Connection conn = this.getConnection();
@@ -17,7 +17,6 @@ public class LoginDao extends DaoBase{
             pstmt.setString(2,password);
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){
-                    usuario = new Usuario();
                     usuario.setCodigoPUCP(rs.getInt(1));
                     usuario.setCorreoPucp(rs.getString(5));
                     usuario.setEspecialidad(rs.getString(6));
@@ -28,6 +27,38 @@ public class LoginDao extends DaoBase{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return usuario;
+    }
+
+    public Usuario obtenerUsuario(int idCodigo) {
+
+        Usuario usuario = null;
+
+        String sql = "SELECT * FROM usuario  WHERE codigoPucp = ?";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+            pstmt.setInt(1, idCodigo);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+
+                if (rs.next()) {
+                    usuario = new Usuario();
+                    usuario.setCodigoPUCP(rs.getInt(1));
+                    usuario.setNombre(rs.getString(2));
+                    usuario.setApellido(rs.getString(3));
+                    usuario.setEdad(rs.getInt(4));
+                    usuario.setCorreoPucp(rs.getString(5));
+                    usuario.setEspecialidad(rs.getString(6));
+                    usuario.setContrasenia(rs.getString(7));
+
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
         return usuario;
     }
 
