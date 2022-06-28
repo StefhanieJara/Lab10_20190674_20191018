@@ -61,12 +61,11 @@
                 <%}%>
                 <%session.removeAttribute("error"); session.invalidate();%>
                 <div class="btn-container">
-                    <button type="submit" class="btn btn-ingresar" >Ingresar</button>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar </button>
+
                 </div>
             </form>
             <h6>
-                    <a href="<%=request.getContextPath()%>/ListaServlet?action=listar&idCodigo=<%=idCodigo%>" class="link-primary" style="margin-left: 120px">Inicia Sesión
-                    </a>
                 <a href="<%=request.getContextPath()%>/RegistroServlet" class="link-primary" style="margin-left: 120px">Soy nuevo y quiero registrarme
                 </a>
             </h6>

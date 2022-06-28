@@ -87,7 +87,7 @@
         class="bg-success row align-items-center justify-content-center"
         background="ima/fondo2.jpg"
 >
-<a href="" class="btn-float" style="margin-right: 100px">
+<a href="<%=request.getContextPath()%>/AnadirServlet" class="btn-float" style="margin-right: 100px">
     <i class="fas fa-plus my-float"></i>
 </a>
 <nav
