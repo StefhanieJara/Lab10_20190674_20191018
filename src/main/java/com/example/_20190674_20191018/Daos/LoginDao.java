@@ -26,7 +26,7 @@ public class LoginDao {
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){
                     usuario = new Usuario();
-                    usuario.setCodigoPUCP(rs.getInt(1));
+                    usuario.setCodigoPUCP(rs.getString(1));
                     usuario.setCorreoPucp(rs.getString(5));
                     usuario.setEspecialidad(rs.getString(6));
                 }
