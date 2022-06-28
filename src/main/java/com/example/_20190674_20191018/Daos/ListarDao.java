@@ -14,7 +14,7 @@ public class ListarDao  extends DaoBase{
                 "from viajes v, seguros s where codigoPUCP = ? and v.empresaSeguro = s.idSeguros";
 
         try (Connection conn = this.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, codigoPucp);
             try (ResultSet rs = pstmt.executeQuery()) {
